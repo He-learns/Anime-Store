@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أنمي ستور - متجر ملابس الأنمي</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="أنمي ستور">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="products.html">المنتجات</a></li>
+                    <li><a href="categories.html">التصنيفات</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="menu-toggle" aria-label="فتح القائمة">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="mobile-menu-overlay"></div>
+            <div class="mobile-menu">
+                <div class="mobile-menu-header">
+                    <button class="close-menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-home"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                    <li>
+                        <a href="products.html">
+                            <i class="fas fa-shopping-bag"></i>
+                            المنتجات
+                        </a>
+                    </li>
+                    <li>
+                        <a href="categories.html">
+                            <i class="fas fa-list"></i>
+                            التصنيفات
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html">
+                            <i class="fas fa-info-circle"></i>
+                            من نحن
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <i class="fas fa-envelope"></i>
+                            اتصل بنا
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-banner">
+            <h1>أنمي ستور</h1>
+            <p>أكبر متجر لملابس وتشرتات وهوديات الأنمي في الجزائر</p>
+        </section>
+
+        <section class="categories-filter">
+            <div class="filter-container">
+                <button class="filter-btn active" data-category="all">
+                    <img src="images/all-products.jpg" alt="الكل">
+                    <span>الكل</span>
+                </button>
+                <button class="filter-btn" data-category="tshirts">
+                    <img src="images/tshirt-icon.jpg" alt="تشرتات">
+                    <span>تشرتات</span>
+                </button>
+                <button class="filter-btn" data-category="hoodies">
+                    <img src="images/hoodie-icon.jpg" alt="هوديات">
+                    <span>هوديات</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="products" class="products">
+            <h2>منتجاتنا</h2>
+            <div class="products-grid">
+                <!-- سيتم إضافة المنتجات ديناميكياً -->
+            </div>
+        </section>
+
+        <!-- نافذة الشراء -->
+        <div class="modal" id="purchaseModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>شراء المنتج</h2>
+                <div class="product-details">
+                    <img id="modalProductImage" src="" alt="">
+                    <div class="product-info">
+                        <h3 id="modalProductName"></h3>
+                        <p id="modalProductPrice"></p>
+                        <div class="size-selection">
+                            <label>اختر المقاس:</label>
+                            <select id="sizeSelect" required>
+                                <!-- سيتم إضافة المقاسات ديناميكياً -->
+                            </select>
+                        </div>
+                        <div class="quantity-selection">
+                            <label>الكمية:</label>
+                            <div class="quantity-controls">
+                                <button type="button" onclick="updateModalQuantity(-1)">-</button>
+                                <input type="number" id="quantityInput" value="1" min="1" max="10" readonly>
+                                <button type="button" onclick="updateModalQuantity(1)">+</button>
+                            </div>
+                        </div>
+                        <div class="total-price">
+                            <label>السعر الإجمالي:</label>
+                            <p id="modalTotalPrice"></p>
+                        </div>
+                    </div>
+                </div>
+                <form class="purchase-form">
+                    <div class="form-group">
+                        <label>الاسم</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الهاتف</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>الولاية</label>
+                        <select id="stateSelect" required onchange="updateModalTotalPrice()">
+                            <option value="">اختر الولاية</option>
+                            <option value="tipaza">تيبازة</option>
+                            <option value="algiers">الجزائر</option>
+                            <option value="blida">البليدة</option>
+                            <option value="boumerdes">بومرداس</option>
+                            <option value="tizi">تيزي وزو</option>
+                            <option value="bouira">البويرة</option>
+                            <option value="medea">المدية</option>
+                            <option value="ain-defla">عين الدفلى</option>
+                            <option value="chlef">الشلف</option>
+                            <option value="bejaia">بجاية</option>
+                            <option value="bordj">برج بوعريريج</option>
+                            <option value="msila">المسيلة</option>
+                            <option value="setif">سطيف</option>
+                            <option value="djelfa">الجلفة</option>
+                            <option value="tiaret">تيارت</option>
+                            <option value="relizane">غليزان</option>
+                            <option value="mascara">معسكر</option>
+                            <option value="saida">سعيدة</option>
+                            <option value="sba">سيدي بلعباس</option>
+                            <option value="tissemsilt">تيسمسيلت</option>
+                            <option value="oran">وهران</option>
+                            <option value="mostaganem">مستغانم</option>
+                            <option value="tlemcen">تلمسان</option>
+                            <option value="adrar">أدرار</option>
+                            <option value="bechar">بشار</option>
+                            <option value="ouargla">ورقلة</option>
+                            <option value="ghardaia">غرداية</option>
+                            <option value="laghouat">الأغواط</option>
+                            <option value="biskra">بسكرة</option>
+                            <option value="batna">باتنة</option>
+                            <option value="tebessa">تبسة</option>
+                            <option value="khenchela">خنشلة</option>
+                            <option value="souk-ahras">سوق أهراس</option>
+                            <option value="oum">أم البواقي</option>
+                            <option value="el-bayadh">البيض</option>
+                            <option value="naama">النعامة</option>
+                            <option value="illizi">إليزي</option>
+                            <option value="tamanrasset">تمنراست</option>
+                            <option value="tindouf">تندوف</option>
+                            <option value="el-oued">الوادي</option>
+                            <option value="annaba">عنابة</option>
+                            <option value="skikda">سكيكدة</option>
+                            <option value="jijel">جيجل</option>
+                            <option value="mila">ميلة</option>
+                            <option value="constantine">قسنطينة</option>
+                            <option value="guelma">قالمة</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>العنوان التفصيلي</label>
+                        <textarea required></textarea>
+                    </div>
+                    <div class="contact-confirmation">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>سيتم الاتصال بك قريباً</h3>
+                        <p>سيقوم فريقنا بالاتصال بك خلال 24 ساعة لتأكيد طلبك وتحديد موعد التوصيل</p>
+                        <div class="contact-info">
+                            <p><i class="fas fa-clock"></i> ساعات العمل: 9 صباحاً - 9 مساءً</p>
+                            <p><i class="fas fa-phone"></i> رقم الهاتف: 0663149723</p>
+                            <p><i class="fas fa-envelope"></i> البريد الإلكتروني: topayred@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" required>
+                            <span>أوافق على شروط الدفع عند الاستلام وأتعهد بدفع رسوم التوصيل</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">تأكيد الطلب</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p>البريد الإلكتروني: topayred@gmail.com</p>
+                <p>الهاتف: 0663149723</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2024 أنمي ستور</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

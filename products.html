@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنتجات - أنمي ستور</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="أنمي ستور">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="products.html">المنتجات</a></li>
+                    <li><a href="categories.html">التصنيفات</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="menu-toggle" aria-label="فتح القائمة">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="mobile-menu-overlay"></div>
+            <div class="mobile-menu">
+                <div class="mobile-menu-header">
+                    <h3>القائمة</h3>
+                    <button class="close-menu" aria-label="إغلاق القائمة">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i>الرئيسية</a></li>
+                    <li><a href="products.html"><i class="fas fa-tshirt"></i>المنتجات</a></li>
+                    <li><a href="categories.html"><i class="fas fa-tags"></i>التصنيفات</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i>من نحن</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i>اتصل بنا</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="products-section">
+            <h1>منتجاتنا</h1>
+            <div class="categories-filter">
+                <div class="filter-container">
+                    <button class="filter-btn active" data-category="all">
+                        <img src="images/all-products.jpg" alt="الكل">
+                        <span>الكل</span>
+                    </button>
+                    <button class="filter-btn" data-category="tshirts">
+                        <img src="images/tshirt-icon.jpg" alt="تشرتات">
+                        <span>تشرتات</span>
+                    </button>
+                    <button class="filter-btn" data-category="hoodies">
+                        <img src="images/hoodie-icon.jpg" alt="هوديات">
+                        <span>هوديات</span>
+                    </button>
+                </div>
+            </div>
+            <div class="products-grid">
+                <!-- سيتم إضافة المنتجات ديناميكياً -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <p>البريد الإلكتروني: topayred@gmail.com</p>
+                <p>الهاتف: 0663149723</p>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2024 أنمي ستور</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
